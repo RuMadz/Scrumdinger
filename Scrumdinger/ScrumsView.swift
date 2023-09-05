@@ -37,3 +37,4 @@ struct ScrumsView_Previews: PreviewProvider {
         ScrumsView(scrums: DailyScrum.sampleData)
     }
 }
+ 

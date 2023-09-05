@@ -31,7 +31,7 @@ struct DailyScrum: Identifiable {
         self.theme = theme
     }
 }
-
+ 
 extension DailyScrum {
     struct Attendee: Identifiable{
         let id: UUID

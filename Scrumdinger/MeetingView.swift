@@ -41,7 +41,7 @@ struct MeetingView: View {
         }
         .padding()
         
-    }
+    } 
 }
 
 struct MeetingView_Previews: PreviewProvider {
