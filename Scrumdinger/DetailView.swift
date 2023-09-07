@@ -13,13 +13,14 @@ struct DetailView: View {
     
     @State private var editingScrum = DailyScrum.emptyScrum
     @State private var isPresentingEditView = false
+    
     var body: some View {
         List{
-            Section(header:Text("Meeting info")){
+            Section(header: Text("Meeting info")){
                 NavigationLink(destination: MeetingView()){
                     Label("Start meeting", systemImage: "timer")
                         .font(.headline)
-                    .foregroundColor(.accentColor)}
+                        .foregroundColor(.accentColor)}
                 HStack{
                     Label("Duration", systemImage: "clock")
                     Spacer()
@@ -39,7 +40,7 @@ struct DetailView: View {
             }
             .font(.headline)
             Section(header: Text("Attendees")) {
-                ForEach(scrum.attendees){ attendee in
+                ForEach(scrum.attendees) { attendee in
                     Label(attendee.name, systemImage: "person")
                 }
                 
@@ -49,7 +50,7 @@ struct DetailView: View {
         }
         .navigationTitle(scrum.title)
         .toolbar {
-            Button("Edit"){
+            Button("Edit") {
                     isPresentingEditView = true
                     editingScrum = scrum
             }
@@ -59,7 +60,7 @@ struct DetailView: View {
                 DetailEditView(scrum: $editingScrum)
                     .navigationTitle(scrum.title)
                     .toolbar {
-                        ToolbarItem(placement: .cancellationAction){
+                        ToolbarItem(placement: .cancellationAction) {
                             Button("Cancel") {
                                 isPresentingEditView = false
                             }
