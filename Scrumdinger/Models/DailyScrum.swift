@@ -21,6 +21,7 @@ struct DailyScrum: Identifiable {
         }
     }
     var theme: Theme
+    var history: [History] = []
     
     init(id: UUID=UUID(), title: String, attendees: [String], lengthInMinutes: Int, theme: Theme) {
         self.id = id
@@ -57,7 +58,7 @@ extension DailyScrum {
             title: "Stratgey",
             attendees: ["Tiri","Momo","Tumi", "Ru"],
             lengthInMinutes: 30,
-            theme: .oxblood),
+            theme: .bubblegum),
         DailyScrum( title: "Budget",
                     attendees: ["Tumi", "Ru", "Tsungi"],
                     lengthInMinutes: 60,

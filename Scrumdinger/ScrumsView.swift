@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScrumsView: View {
     @Binding var scrums: [DailyScrum]
+    @State var isPresentingNewScrumView = false
     
     var body: some View {
         NavigationStack{
@@ -19,14 +20,18 @@ struct ScrumsView: View {
                 }
                 .listRowBackground(scrum.theme.mainColor)
             }
+            
             .navigationTitle("Daily Scrums")
             .toolbar {
-                Button(action: {}) {
+                Button(action: {isPresentingNewScrumView = true}) {
                     Image(systemName: "plus")
                 }
                 .accessibilityLabel("New Scrum")
             }
             .padding(.all, 20)
+        }
+        .sheet(isPresented: $isPresentingNewScrumView) {
+            NewScrumSheet(scrums: $scrums, isPresentingNewScrumView: $isPresentingNewScrumView)
         }
     }
         

@@ -17,7 +17,7 @@ struct DetailView: View {
     var body: some View {
         List{
             Section(header: Text("Meeting info")){
-                NavigationLink(destination: MeetingView()){
+                NavigationLink(destination: MeetingView(scrum: $scrum)){
                     Label("Start meeting", systemImage: "timer")
                         .font(.headline)
                         .foregroundColor(.accentColor)}
@@ -46,6 +46,18 @@ struct DetailView: View {
                 
             }
             .font(.headline)
+            Section(header: Text("HIstory")) {
+                if scrum.history.isEmpty{
+                    Label("No meetings yet", systemImage: "calendar.badge.exclamationmark")
+                }
+                ForEach(scrum.history) {
+                    history in
+                    HStack {
+                        Image(systemName: "calendar")
+                        Text(history.date, style:.date)
+                    }
+                }
+            }
 
         }
         .navigationTitle(scrum.title)
